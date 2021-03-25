@@ -2,7 +2,7 @@
 
 #### desc
 
-User may select from a menu of 16 different task, and may interact using the console.
+User selects task from a menu with 16 different options. Interacts with the program using the keyboard. The taska spans from the checking from palindrome to a number guesser game.
 
 #### tech
-C#. Object Oriented Programming. Observer Pattern. Clean Code.
+C#. Object Oriented Programming. Observer Pattern. Clean Code. 
