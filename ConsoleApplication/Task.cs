@@ -6,11 +6,8 @@
 //    void Run();
 //}
 
-
-
 public abstract class Task
 {
-
     protected int Id;
     protected string Title;
     protected string Description;
