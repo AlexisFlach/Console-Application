@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-public static class Menu
+public class Menu<T> where T : Task
 {
     static bool Welcome = true;
-    private static readonly string WelcomeMsg = "\nWelcome The Console App!\nPlease choose a task\n\nOptions\nTasks #1-16\nMenu #99\nExit #404";
+    private static readonly string WelcomeMsg = "\nWelcome to The Console App!\nPlease choose a task\n\nOptions\nTasks #1-16\nMenu #99\nExit #404";
 
-    public static void SetActive(List<ITask> Task)
+
+    public static void SetActive(List<T> list)
     {
         int idx;
         if (Welcome)
@@ -23,7 +24,7 @@ public static class Menu
 
         if (idx == 99)
         {
-            PrintMenu(Task);
+            PrintMenu(list);
         }
 
         if (idx == 404)
@@ -32,37 +33,38 @@ public static class Menu
             Thread.Sleep(2);
             Environment.Exit(0);
         }
-        foreach (var task in Task)
+        foreach (var task in list)
         {
             if (idx < 17)
             {
-                if (idx == task.TaskId)
+                int id = task.GetId();
+                if (idx == id)
                 {
-                    Console.WriteLine(task.Description);
-                    Thread.Sleep(1000);
+                    Console.WriteLine(task.GetDescription());
+                    Thread.Sleep(500);
                     task.Run();
-                    Thread.Sleep(1000);
-                    SetActive(Task);
+                    Thread.Sleep(500);
+                    SetActive(list);
                 }
             }
             else if (idx != 99 && idx != 404)
             {
                 ConsoleEventing.Error("No such task");
-                SetActive(Task);
+                SetActive(list);
             }
             else
             {
-                SetActive(Task);
+                SetActive(list);
             }
         }
     }
 
-    public static void PrintMenu(List<ITask> list)
+    public static void PrintMenu(List<T> list)
     {
-        IEnumerable<ITask> menu = list.OrderBy(task => task.TaskId);
-        foreach (var task in menu)
+        IEnumerable<T> menu = list.OrderBy(item => item.GetId());
+        foreach (var item in menu)
         {
-            Console.WriteLine($"{task.TaskId}  {task.Title}");
+            Console.WriteLine($"{item.GetId()}  {item.GetTitle()}");
         }
     }
 }

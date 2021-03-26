@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Linq;
 
-public class Palindrome : ITask
+public class Palindrome : Task
 {
-    public int TaskId { set; get; } = 12;
-    public string Title { get; set; } = "Palindrome";
-    public string Description { get; set; } = "Checks to see if input is valid palindrome.";
-
     TaskHandler handler;
 
     public Palindrome(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 12;
+        Title = "Palindrome";
+        Description = "Checks to see if input is valid palindrome.";
     }
 
     public bool PalindromeValidator()
@@ -22,7 +21,7 @@ public class Palindrome : ITask
         return input == reversed;
     }
 
-    public void Run()
+    public override void Run()
     {
         Console.WriteLine(PalindromeValidator());
     }

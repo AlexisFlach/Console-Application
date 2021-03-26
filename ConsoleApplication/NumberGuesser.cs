@@ -1,16 +1,16 @@
 ﻿using System;
 
-public class NumberGuesser : ITask
+public class NumberGuesser : Task
 {
-    public int TaskId { get; set; } = 6;
-    public string Title { get; set; } = "Number Guesser";
-    public string Description { get; set; } = "Find the correct number";
     TaskHandler handler;
 
     public NumberGuesser(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 6;
+        Title = "Number Guesser";
+        Description = "Find the correct number";
     }
 
 
@@ -56,7 +56,7 @@ public class NumberGuesser : ITask
         }
     }
 
-    public void Run()
+    public override void Run()
     {
         RunGame();
     }

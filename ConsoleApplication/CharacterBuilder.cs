@@ -1,10 +1,8 @@
 ﻿using System;
 
-public class CharacterBuilder : ITask
+public class CharacterBuilder : Task
 {
-    public int TaskId { set; get; } = 16;
-    public string Title { get; set; } = "Character Creator";
-    public string Description { get; set; } = "Create your hero, and your enemy!";
+   
     TaskHandler handler;
     CharacterCollection characterCollection = new CharacterCollection();
 
@@ -13,6 +11,9 @@ public class CharacterBuilder : ITask
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 16;
+        Title = "Character Creator";
+        Description = "Create your hero, and your enemy!";
     }
 
     public void CreateCharacter()
@@ -22,6 +23,7 @@ public class CharacterBuilder : ITask
         CharacterModel character = new CharacterModel(input, type);
         ConsoleEventing.Success("Character created");
         characterCollection.AddCharacter(character);
+        
     }
 
     public CharacterType SetCharacterType()
@@ -42,11 +44,9 @@ public class CharacterBuilder : ITask
         {
             return CharacterType.Neutral;
         }
-
-
     }
 
-    public void Run()
+    public  override void Run()
     {
         CreateCharacter();
         CreateCharacter();

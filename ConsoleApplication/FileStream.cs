@@ -1,18 +1,17 @@
 ﻿using System;
 using System.IO;
 
-public class FileStream : ITask
+public class FileStream : Task
 {
-    public int TaskId { set; get; } = 7;
-    public string Title { get; set; } = "File Stream";
-    public string Description { get; set; } = "Lets your save text to a file and provides the option for you to read it.";
-
     TaskHandler handler;
 
     public FileStream(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 7;
+        Title = "File Stream";
+        Description = "Lets your save text to a file and provides the option for you to read it.";
     }
 
     public async void WriteFile()
@@ -47,7 +46,7 @@ public class FileStream : ITask
         }
     }
 
-    public void Run()
+    public override void Run()
     {
         WriteFile();
 

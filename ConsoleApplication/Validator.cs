@@ -29,6 +29,28 @@ public class Validator
         return isValid;
     }
 
+    public static string ValidateString(string msg)
+    {
+        bool err = true;
+
+        while (err)
+        {   
+            string str = Validator.GetString(msg);
+            if (!Validator.CheckString(str))
+            {
+                ConsoleEventing.Error("Not valid.");
+                err = true;
+            }
+            else
+            {
+                ConsoleEventing.Success("Valid string");
+                err = false;
+                return str;
+            }
+        }
+        return "";
+    }
+
     public static string ValidateString(string name, string msg)
     {
         bool err = false;

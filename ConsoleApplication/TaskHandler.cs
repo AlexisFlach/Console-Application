@@ -2,16 +2,17 @@
 
 public class TaskHandler : ITaskHandler
 {
-    public List<ITask> Task = new List<ITask>();
+    protected List<Task> Tasks = new List<Task>();
 
-    public void RegisterTask(ITask task)
+
+    public void RegisterTask(Task task)
     {
-        Task.Add(task);
+        Tasks.Add(task);
     }
 
     public void SetActiveTask()
     {
-        Menu.SetActive(Task);
+        Menu<Task>.SetActive(Tasks);
     }
     public void Run()
     {

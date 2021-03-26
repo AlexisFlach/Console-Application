@@ -1,17 +1,16 @@
 ﻿using System.Linq;
 
-public class NumbersBetween : ITask
+public class NumbersBetween : Task
 {
-    public int TaskId { set; get; } = 13;
-    public string Title { get; set; } = "Numbers Between";
-    public string Description { get; set; } = "Given two inputs prints all numbers inbetween";
-
     TaskHandler handler;
 
     public NumbersBetween(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 13;
+        Title = "Numbers Between";
+        Description = "Given two inputs prints all numbers inbetween";
     }
 
     public void PrintNumbersBetween()
@@ -36,7 +35,7 @@ public class NumbersBetween : ITask
         }
     }
 
-    public void Run()
+    public override void Run()
     {
         PrintNumbersBetween();
     }

@@ -1,17 +1,16 @@
 ﻿using System;
 
-public class MultiplicationTablePrinter : ITask
+public class MultiplicationTablePrinter : Task
 {
-    public int TaskId { set; get; } = 10;
-    public string Title { get; set; } = "Multiplication Table";
-    public string Description { get; set; } = "Prints the Multiplication Table";
-
     TaskHandler handler;
 
     public MultiplicationTablePrinter(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 10;
+        Title = "Multiplication Table";
+        Description = "Prints the Multiplication Table";
     }
 
     public void PrintMultiplicationTable()
@@ -31,7 +30,7 @@ public class MultiplicationTablePrinter : ITask
         }
     }
 
-    public void Run()
+    public override void Run()
     {
         PrintMultiplicationTable();
     }

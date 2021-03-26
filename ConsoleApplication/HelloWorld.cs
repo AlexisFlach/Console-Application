@@ -1,8 +1,9 @@
-﻿public class HelloWorld : ITask
+﻿
+public class HelloWorld : Task
 {
-    public int TaskId { get; set; } = 1;
-    public string Title { get; set; } = "Hello World";
-    public string Description { get; set; } = "Prints 'Hello World'.";
+    ////private int Id { get; set; } = 1;
+    //private string Title { get; set; } = "Hello World";
+    //private string Description { get; set; } = "Prints 'Hello World'.";
 
     TaskHandler handler;
 
@@ -10,6 +11,9 @@
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 1;
+        Title = "Hello World";
+        Description = "Prints 'Hello World'.";
     }
 
     private void PrintString(string msg)
@@ -17,12 +21,12 @@
         ConsoleEventing.Msg(msg);
     }
 
-    public void Run()
+
+    public override void Run()
     {
         PrintString("Hello World");
     }
 }
-
 
 
 

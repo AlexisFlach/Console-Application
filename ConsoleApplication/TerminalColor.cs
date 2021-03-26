@@ -1,17 +1,16 @@
 ﻿using System;
 
-public class TerminalColor : ITask
+public class TerminalColor : Task
 {
-    public int TaskId { get; set; } = 3;
-    public string Title { get; set; } = "Terminal Color";
-    public string Description { get; set; } = "Changes Color in terminal";
-
     TaskHandler handler;
 
     public TerminalColor(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 3;
+        Title = "Terminal Color";
+        Description = "Changes Color in terminal";
     }
 
     public void ModifyTerminalColors(ConsoleColor consoleColor, ConsoleColor backgroundColor)
@@ -21,7 +20,7 @@ public class TerminalColor : ITask
     }
     public void Reset() => Console.ResetColor();
 
-    public void Run()
+    public override void Run()
     {
         ModifyTerminalColors(ConsoleColor.Red, ConsoleColor.Black);
         ConsoleEventing.Msg("Write something");

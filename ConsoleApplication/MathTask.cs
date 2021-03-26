@@ -1,18 +1,16 @@
 ﻿using System;
 
-public class MathTask : ITask
-{
-    public int TaskId { set; get; } = 9;
-    public string Title { get; set; } = "Math Task";
-    public string Description { get; set; } = "Returns input squared, raised by 2 AND raised by 10.";
-
+public class MathTask : Task
+{ 
     TaskHandler handler;
-
 
     public MathTask(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 9;
+        Title = "Math Task";
+        Description = "Returns input squared, raised by 2 AND raised by 10.";
     }
 
     public double GetUserInput()
@@ -41,7 +39,7 @@ public class MathTask : ITask
         ConsoleEventing.Msg($"Square root: {sqrt}\nEleveted by two: {elevetedBy2}\nElevated by ten: {elevetedBy10}");
     }
 
-    public void Run()
+    public override void Run()
     {
         Print();
     }

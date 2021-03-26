@@ -1,11 +1,7 @@
 ﻿using System;
 
-public class DatePrinter : ITask
+public class DatePrinter : Task
 {
-    public int TaskId { get; private set; } = 4;
-    public string Title { get; set; } = "Date Printer";
-    public string Description { get; set; } = "Prints current date.";
-
     TaskHandler handler;
 
     private string TodaysDate = DateTime.Now.ToString("dd/MM/yyyy");
@@ -14,9 +10,12 @@ public class DatePrinter : ITask
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 4;
+        Title = "Date Printer";
+        Description = "Prints current date.";
     }
 
-    public void Run()
+    public override void Run()
     {
         ConsoleEventing.Msg(TodaysDate);
     }

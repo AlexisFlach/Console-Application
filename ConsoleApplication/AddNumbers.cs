@@ -1,17 +1,16 @@
 ﻿using System;
 
-public class AddNumbers : ITask
+public class AddNumbers : Task
 {
-    public int TaskId { get; set; } = 15;
-    public string Title { get; set; } = "Add Numbers Together";
-    public string Description { get; set; } = "Prints the total sum of comma-separeted values";
-
     TaskHandler handler;
 
     public AddNumbers(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 15;
+        Title = "Add Numbers Together";
+        Description = "Prints the total sum of comma-separeted values";
     }
 
     public int[] UserInput()
@@ -34,7 +33,7 @@ public class AddNumbers : ITask
         return sum;
     }
 
-    public void Run()
+    public override void Run()
     {
         var input = UserInput();
         Console.WriteLine(Add(input));

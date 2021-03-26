@@ -1,6 +1,6 @@
 ﻿partial class Program
 {
-    static void Main(string[] args)
+        static void Main(string[] args)
     {
         var taskHandler = new TaskHandler();
         RegisterTasks(taskHandler);
@@ -16,6 +16,7 @@
         var largestNumberPrinter = new LargestNumberPrinter(handler);
         var numberGuesser = new NumberGuesser(handler);
         var writeFile = new FileStream(handler);
+        var maxCharPrinter = new MaxChar(handler);
         var multiplicationTable = new MultiplicationTablePrinter(handler);
         var palindrome = new Palindrome(handler);
         var arrayBuilder = new ArrayBuilder(handler);

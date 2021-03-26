@@ -1,15 +1,14 @@
-﻿public class LargestNumberPrinter : ITask
+﻿public class LargestNumberPrinter : Task
 {
-    public int TaskId { get; private set; } = 5;
-    public string Title { get; set; } = "Compare Numbers";
-    public string Description { get; set; } = "Compares two inputs, returns largest int.";
-
     TaskHandler handler;
 
     public LargestNumberPrinter(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 5;
+        Title = "Compare Numbers";
+        Description = "Compares two inputs, returns largest number.";
     }
 
     public string Compare()
@@ -36,7 +35,7 @@
         }
     }
 
-    public void Run()
+    public override void Run()
     {
         string output = Compare();
         ConsoleEventing.Msg(output);

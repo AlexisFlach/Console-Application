@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 
-public class PrintOddsAndEvens : ITask
-{
-    public int TaskId { set; get; } = 14;
-    public string Title { get; set; } = "Print Odds and Evens";
-    public string Description { get; set; } = "Prints two arrays.\nOne with only odds, one only evens";
+public class PrintOddsAndEvens : Task
+{ 
     TaskHandler handler;
 
     public PrintOddsAndEvens(TaskHandler handler)
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 14;
+        Title = "Odds and Evens";
+        Description = "Prints two arrays. One with only odds, one only evens.";
     }
 
     public int[] UserInput()
@@ -54,7 +54,7 @@ public class PrintOddsAndEvens : ITask
         ConsoleEventing.Msg(list);
     }
 
-    public void Run()
+    public override void Run()
     {
         var userInput = UserInput();
         var sorted = SortedArray(userInput);

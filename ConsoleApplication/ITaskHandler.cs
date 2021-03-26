@@ -1,6 +1,6 @@
 ﻿interface ITaskHandler
 {
-    void RegisterTask(ITask task);
+    void RegisterTask(Task task);
     void SetActiveTask();
 }
 

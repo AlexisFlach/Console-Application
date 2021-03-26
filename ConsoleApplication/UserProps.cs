@@ -1,9 +1,5 @@
-﻿public class UserProps : ITask
+﻿public class UserProps : Task
 {
-    public int TaskId { get; private set; } = 2;
-    public string Title { get; set; } = "User Props";
-    public string Description { get; set; } = "Prints user info";
-
     TaskHandler handler;
   
     public string FirstName { get; protected set; }
@@ -14,6 +10,9 @@
     {
         this.handler = handler;
         handler.RegisterTask(this);
+        Id = 2;
+        Title = "User Props";
+        Description = "Prints user info";
     }
 
     public void Reset()
@@ -23,7 +22,7 @@
         Age = -1;
     }
 
-    public void Run()
+    public override void Run()
     {
         FirstName = Validator.ValidateString(FirstName, "Please enter your first name");
         LastName = Validator.ValidateString(LastName, "Please enter your last name");

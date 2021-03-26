@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Linq;
 
-public class ArrayBuilder : ITask
+public class ArrayBuilder : Task
 {
-    public int TaskId { set; get; } = 11;
-    public string Title { get; set; } = "Array Builder";
-    public string Description { get; set; } = "Prints an array two times; one times in its original form, one time sorted.";
-
     TaskHandler handler;
 
     public int[] nums = new int[10];
@@ -17,6 +13,10 @@ public class ArrayBuilder : ITask
         this.handler = handler;
         handler.RegisterTask(this);
         nums = RandomArray(nums);
+        Id = 11;
+        Title = "Array Builder";
+        Description = "Prints an array two times; one times in its original form, one time sorted.";
+
     }
 
     public int[] RandomArray(int[] arr)
@@ -43,7 +43,7 @@ public class ArrayBuilder : ITask
         ConsoleEventing.Msg(list);
     }
 
-    public void Run()
+    public override void Run()
     {
         PrintArr(nums);
         PrintArr(SortedArray(nums));
